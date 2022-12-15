@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<div>
+  {{ content }}
+
+  {% if site.paginate %}
+    {% assign posts = paginator.posts %}
+  {% else %}
+    {% assign posts = site.posts %}
+  {% endif %}
+
+  {%- if posts.size > 0 -%}
+
+    {%- if page.list_title -%}
+      <h2>{{ page.list_title }}</h2>
+    {%- endif -%}
+
+    {%- assign i = 0 -%}
+
+    {%- for post in posts -%}
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+
+      {% if post.hide != true %}
+        {% if i == 0 %}
+          <div class="post latest-post">
+          {%- assign i = nil -%}
+        {% else %}
+          <div class="post">
+        {% endif %}
+
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        <p>{{ post.date | date: date_format }}</p>
+        <p>{{ post.description | markdownify }}</p>
+        </div>
+      {% endif %}
+
+    {%- endfor -%}
+  {% endif %}
+</div>

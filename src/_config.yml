@@ -1,0 +1,22 @@
+title: TheEvilSkeleton
+email: theevilskeleton@riseup.net
+description:
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://theevilskeleton.gitlab.io" # the base hostname & protocol for your site, e.g. http://example.com
+feed:
+ tags:
+   path: "feed/tags/"
+plugins:
+  - jekyll-feed
+  - jekyll-toc
+  - jekyll-target-blank
+  - jekyll-seo-tag
+  - jekyll-sitemap
+defaults:
+  -
+   scope:
+     path: "_posts"
+     type: "posts"
+   values:
+     layout: "posts"
+     author: "TheEvilSkeleton"

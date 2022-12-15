@@ -1,0 +1,34 @@
+<div id="header">
+  <div class="header-elements">
+    <b><a href="#body" class="main-content">Skip Navigation</a></b>
+    <div class="header-left">
+      <b><a href="/">TheEvilSkeleton</a></b>
+    </div>
+    <div class="header-right">
+      {% if page.layout == "home" %}
+        <a href="/" id="active">Home</a>
+      {% else %}
+        <a href="/">Home</a>
+      {% endif %}
+
+      {% if page.layout == "posts" %}
+        <a href="/blog" id="active">Blog</a>
+      {% else %}
+        <a href="/blog">Blog</a>
+      {% endif %}
+
+      {% if page.layout == "projects" %}
+        <a href="/projects" id="active">Projects</a>
+      {% else %}
+        <a href="/projects">Projects</a>
+      {% endif %}
+
+      {% if page.layout == "about" %}
+        <a href="/about" id="active">About</a>
+      {% else %}
+        <a href="/about">About</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+

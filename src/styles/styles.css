@@ -1,0 +1,337 @@
+---
+---
+
+/*
+    styles.css: CSS file for everything
+    Copyright (C) 2021 Hari Rana / TheEvilSkeleton and contributors
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+/* Credit to https://github.com/lionirdeadman/lionirdeadman.github.io */
+
+/* Dark Mode (Default) */
+:root {
+  --main-color: white;
+  --main-bg-color: #212121;
+  --code-color: #292929;
+  --codeblock-text-color: lightgray;
+  --blockquote-text-color: #555555;
+  --blockquote-bg-color: #191919;
+  --blockquote-border-left-color: #696969;
+  --header-bg-color: #151515;
+  --header-select-color: #ba9cff;
+  --text-select-color: black;
+  --text-select-bg-color: #ba9cff;
+  --hyperlink-color: #ba9cff;
+  --hyperlink-hover-color: #bf69ff;
+  --scrollbar-color: var(--header-select-color);
+  --scrollbar-bg-color: var(--code-color);
+  --shadow-color: black;
+  --footer-text-color: gray;
+  /* Global */
+  --fade-out-animation: 0.25s;
+}
+
+/* Sepia (light) Mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-color: black;
+    --main-bg-color: #ffe7cf;
+    --code-color: #e5cdb9;
+    --codeblock-text-color: #3f365b;
+    --blockquote-text-color: var(--code-color);
+    --blockquote-bg-color: #e5c8ae;
+    --blockquote-border-left-color: #97794b;
+    --header-bg-color: #f2d8bc;
+    --header-select-color: black;
+    --header-text-color: black;
+    --text-select-color: #ffffff;
+    --text-select-bg-color: black;
+    --hyperlink-color: #0007ff;
+    --hyperlink-hover-color: #3500ff;
+    --scrollbar-color: var(--header-select-color);
+    --scrollbar-bg-color: var(--code-color);
+    --shadow-color: gray;
+    --footer-text-color: black;
+  }
+  #header a:hover, #header #active {
+    color: white !important;
+  }
+  #header a {
+    color: black !important;
+  }
+}
+
+/* General Looks */
+* {
+  color: var(--main-color);
+  font-family: sans-serif;
+  scrollbar-color: var(--scrollbar-color) var(--scrollbar-bg-color);
+  overflow-wrap: break-word;
+}
+html {
+  background-color: var(--main-bg-color);
+  scroll-behavior: smooth;
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+}
+.no-text-decoration {
+  text-decoration: none;
+}
+
+/* Body */
+p, body, code, li, ul {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+/* Codeblock */
+code, .cursor, span {
+  color: var(--codeblock-text-color);
+  font-family: monospace;
+}
+.language-terminal, .language-plaintext {
+  position: relative;
+  padding: 0 0.5em 0;
+  max-height: 20em;
+  border-radius: 5px;
+  background-color: var(--code-color);
+  overflow: scroll;
+}
+
+/* Images */
+img, .mastodon-embed, .statcounter {
+  border-radius: 7.5px;
+}
+img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+.icon {
+  display: block;
+  margin: 0 auto;
+  width: 256px;
+  height: 256px;
+  box-shadow: 0 0 50px var(--shadow-color);
+  border-radius: 100%;
+}
+
+/* Lists */
+li, ul {
+  position: relative;
+  left: -11px;
+}
+ul a {
+  line-height: 2em;
+}
+
+/* Block quote */
+blockquote {
+  color: var(--blockquote-text-color);
+  padding: 0 1.5em;
+  border-left: 8px solid var(--blockquote-border-left-color);
+  margin: 0;
+  border-radius: 2.5px;
+}
+
+/* Blinking cursor */
+.cursor {
+  animation: cursor 1s infinite;
+}
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Header */
+#header {
+  overflow: hidden;
+  background-color: var(--header-bg-color);
+  padding: 10px 5px;
+  border-radius: 10px;
+}
+
+#header a {
+  border-radius: 5px;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  line-height: 25px;
+  margin: 0 auto;
+  transition: var(--fade-out-animation);
+}
+
+#header a:hover, #header #active {
+  background-color: var(--header-select-color);
+  color: var(--header-bg-color);
+}
+
+.header-elements {
+  max-width: 60em;
+  margin: 0 auto;
+}
+
+.header-right {
+  display: flex;
+}
+
+.header-left {
+  display: none;
+}
+
+/* Footer */
+#footer {
+  overflow: hidden;
+  background-color: var(--header-bg-color);
+  border-radius: 10px;
+}
+footer p {
+  color: var(--footer-text-color);
+  text-align: center;
+  font-size: 0.90rem;
+}
+#footer p a {
+  color: var(--hyperlink-color);
+}
+
+/* Selection */
+::selection {
+  color: var(--text-select-color);
+  background: var(--text-select-bg-color);
+}
+
+/* Hyperlink */
+a:hover, a:active, a:hover code, a:active code {
+  transition: var(--fade-out-animation);
+}
+a {
+  text-decoration: none;
+}
+a:active, a:link, a:visited, a:active code, a:link code, a:visited code {
+  color: var(--hyperlink-color);
+}
+
+a:hover {
+  color: var(--hyperlink-hover-color);
+}
+
+a:hover:not(a:hover.text-logo, header ul li a:hover) {
+  text-decoration: underline;
+  transition: var(--fade-out-animation);
+}
+
+/* Skip navigation */
+.main-content {
+  position: absolute;
+  transform: translateY(-200%);
+  margin: 0 auto;
+}
+
+.main-content:focus {
+  transform: translateY(0);
+  background: var(--blockquote-bg-color)
+}
+
+.post {
+  padding: 25px;
+}
+
+.post p {
+  font-size: 80%;
+}
+
+.post h3 {
+  text-decoration: none;
+}
+
+.latest-post {
+  background-color: var(--header-bg-color);
+  border-radius: 10px;
+}
+
+/* Sources */
+sup {
+  font-size: 0.75rem;
+}
+
+/* Table */
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td {
+  font-size: 75%;
+  text-align: center;
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+  .text-logo {
+    display: unset;
+  }
+
+  .header-right {
+    float: right;
+    column-gap: 1em;
+  }
+  .header-left {
+    display: unset;
+    float: left;
+  }
+
+  .header-left a {
+    font-size: 35px !important;
+  }
+
+  #header {
+    padding: 20px 0;
+  }
+  #header a {
+    font-size: 1.45rem;
+  }
+
+  #body {
+    margin: 0 auto;
+    max-width: 40em;
+  }
+
+  p, #body, code, li, ul, span {
+    font-size: 1.45rem;
+  }
+
+  li, ul {
+    position: relative;
+    left: unset;
+  }
+
+  sup {
+    font-size: 1rem;
+  }
+}
+
+
